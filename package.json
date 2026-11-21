@@ -1,0 +1,10 @@
+{
+  "name": "spritee",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.1"
+  }
+}

@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+      nodejs: 22
+    commands:
+      - npm ci
+  pre_build:
+    commands:
+      - ': "${AWS_ACCOUNT_ID:?Set AWS_ACCOUNT_ID in the CodeBuild environment}"'
+      - ': "${IMAGE_REPO_NAME:?Set IMAGE_REPO_NAME in the CodeBuild environment}"'
+      - ': "${AWS_DEFAULT_REGION:?Set AWS_DEFAULT_REGION in the CodeBuild environment}"'
+      - export REPOSITORY_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+      - export IMAGE_TAG="$(printf '%s' "$CODEBUILD_RESOLVED_SOURCE_VERSION" | cut -c 1-7)"
+      - aws ecr get-login-password --region "$AWS_DEFAULT_REGION" | docker login --username AWS --password-stdin "$REPOSITORY_URI"
+  build:
+    commands:
+      - npm test
+      - python -m unittest discover -s tests -v
+      - docker build --build-arg BUILD_COMMIT="$IMAGE_TAG" -t "$REPOSITORY_URI:$IMAGE_TAG" .
+      - docker push "$REPOSITORY_URI:$IMAGE_TAG"
+      - printf '[{"name":"spritee","imageUri":"%s"}]\n' "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json

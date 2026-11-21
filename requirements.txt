@@ -1,0 +1,2 @@
+# Python standard library only; used by tests/test_site.py.
+# No pip packages are required for this project.

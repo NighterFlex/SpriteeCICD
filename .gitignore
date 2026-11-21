@@ -1,0 +1,26 @@
+node_modules/
+__pycache__/
+
+# Local environment files and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python virtual environments and test caches
+.venv/
+venv/
+.pytest_cache/
+
+# Terraform local files and state (may contain secrets)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+
+# Local archives and operating-system files
+*.rar
+.DS_Store
+Thumbs.db
