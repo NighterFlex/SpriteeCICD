@@ -1,0 +1,15 @@
+aws_region    = "us-east-1"
+project       = "Spritee"
+environment   = "staging"
+owner         = "Group9"
+cost_center   = "cloud-computing"
+low_cost_mode = true
+desired_count = 0
+
+# Optional settings:
+# allowed_cidr = "203.0.113.10/32"
+# enable_nat_gateway = true
+# single_nat_gateway = true
+# acm_certificate_arn = ""
+# alert_email = ""
+# enable_cloudtrail = false

@@ -66,7 +66,7 @@ The Node.js interaction tests use jsdom to exercise the drawing page's DOM event
 After AWS setup and a push to `main`:
 
 ```powershell
-aws codepipeline get-pipeline-state --name SpriteePipeline
+aws codepipeline get-pipeline-state --name WebAppPipeline
 aws codebuild list-builds-for-project --project-name SpriteeBuild --sort-order DESCENDING
 aws ecs describe-services --cluster SpriteeCluster --services SpriteeStagingService
 ```
