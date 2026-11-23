@@ -35,8 +35,9 @@ Open `http://localhost:8080`; the homepage footer should show `Build: local`.
 
 - [Architecture blueprint](ARCHITECTURE.md)
 - [Project report and AWS setup checklist](PROJECT_REPORT.md)
+- [Deployment and infrastructure runbook](RUNBOOK.md)
 
-The AWS infrastructure and live deployment are not created by these local commands. Follow the project report and coordinate resource names, region, permissions, and budget with the group before provisioning AWS resources.
+The AWS infrastructure and live deployment are not created by these local commands. Follow the [runbook](RUNBOOK.md) and coordinate resource names, region, permissions, and budget with the group before provisioning AWS resources.
 
 ## Working as a team
 
